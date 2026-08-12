@@ -7,12 +7,15 @@ bool isValid(string s) {
     stack<char> st;
 
     for (char c : s) {
+        // Opening brackets
         if (c == '(' || c == '{' || c == '[') {
             st.push(c);
         }
+        // Closing brackets
         else {
-            if (st.empty())
+            if (st.empty()) {
                 return false;
+            }
 
             char top = st.top();
 
@@ -26,7 +29,8 @@ bool isValid(string s) {
         }
     }
 
-    return true;
+    // Valid only if no unmatched opening brackets remain
+    return st.empty();
 }
 
 int main() {
@@ -35,10 +39,11 @@ int main() {
     cout << "Enter a string of brackets: ";
     cin >> s;
 
-    if (isValid(s))
+    if (isValid(s)) {
         cout << "Valid Parentheses" << endl;
-    else
+    } else {
         cout << "Invalid Parentheses" << endl;
+    }
 
     return 0;
 }
